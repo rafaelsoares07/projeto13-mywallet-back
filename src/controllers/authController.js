@@ -40,7 +40,7 @@ export async function createUser(req, res) {
         return
     }
 
-    await db.collection("usuarios").insertOne({...user, password:passwordHash, passwordConfirm:true, transacoes:[{value:2000, type:'saida'}]});
+    await db.collection("usuarios").insertOne({...user, password:passwordHash, passwordConfirm:true, transacoes:[],balance:0});
     
     res.status(200).send('deu certinho')
    
@@ -89,6 +89,7 @@ export async function loginUser(req, res){
         sectionExists,
         userExists
     }
+
     res.status(200).send(aux)
    
 }
