@@ -1,0 +1,16 @@
+import { MongoClient, ObjectId } from 'mongodb';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const mongoClient = new MongoClient(process.env.MONGO_URL_CONECTION);
+let db;
+mongoClient.connect(() => {
+  db = mongoClient.db(process.env.MONGO_DATABASE);
+  console.log('Conectado com o banco: ' + process.env.MONGO_DATABASE)
+});
+
+const objectId = ObjectId;
+
+
+export { db, objectId };
